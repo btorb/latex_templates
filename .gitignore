@@ -1,0 +1,12 @@
+# all auxiliary latex/biblatex files
+*.bbl
+*.aux
+*.bcf
+*.log
+*.xml
+*.blg
+*.log
+auto/
+
+# emacs related
+*~

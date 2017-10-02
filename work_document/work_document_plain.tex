@@ -1,0 +1,64 @@
+% Plain document layout for working documents. No fancy title
+% and just a few tricks for a clear layout and the use of references
+%
+% Feel free to re-use but keep this preamble 
+%
+% Author: Ben Torben-Nielsen, 2017-10-02
+
+\documentclass[a4paper]{article}
+
+% load some of the most common packages
+% Add more packages if required. You can also use multiple commands
+\usepackage{fullpage,comment,graphicx}
+\usepackage{metalogo}
+
+% Disable the automatic indentation of paragraphs
+\setlength{\parindent}{0pt}
+% If preferred on paragraph-to-paragraph basis, use the follow
+% command in front of the appropriate paragraphs
+% \noindent
+
+% Deal with the bibliography. Currently, I prefer Biber \& Biblatex
+\usepackage[
+backend=biber,
+style=authoryear, % how it appears in the bibliography
+sorting=ynt,
+citestyle=authoryear-comp, % how the citation appears in the text
+natbib
+]{biblatex} 
+\addbibresource{../bibliography/bibliography_sample.bib}
+
+% in case you want to make some shortcut commands
+\newcommand{\ra}{$~\rightarrow~$}
+\newcommand{\la}{$~\leftarrow~$}
+
+% set or overwrite the data. Uncomment what you require
+\def \mydate {Before the deadline}
+\def \mydate {\today}
+
+\begin{document}
+
+\noindent(Confidential - \mydate)
+\begin{center}
+\Large This is the title
+\end{center}
+
+
+\section{Build this file}
+No Lorem ipsum here. To build this file, run \LaTeX, biblatex and Latex again. You need to run Latex twice because in between you build the files for the bibliography. Also, in case you have references and section numbers, Latex has to be run twice to propagate all this information.
+
+I always use the \texttt{xelatex} command because I often change the default font types and \XeLaTeX was one of the first to handle fonts well.
+
+\section{Equations}
+
+Compartmental modeling in neuroscience is based on the following equation \ref{eq:compartmental}:
+\begin{equation}
+\label{eq:compartmental}
+c_m \frac{d V_n}{d t} = g_x(V-E_x)+g_a\Delta V_{n-1} + g_a \Delta V_{n+1},
+\end{equation}
+
+If you like equations, have a look at \citet{Wybo2015}. This citation command \verb+\citet{Wybo2015}+ is a natbib one. \verb+\cite{}+ is the standard command but needs some tweaking with biblatex.
+
+\printbibliography[title={My custom reference list}]
+
+\end{document}
